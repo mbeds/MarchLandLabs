@@ -56,10 +56,15 @@
             color: var(--primary-red);
         }
 
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
         nav a {
             color: var(--text-muted);
             text-decoration: none;
-            margin-left: 2rem;
             font-size: 0.875rem;
             font-weight: 500;
             transition: color 0.2s ease;
@@ -106,8 +111,25 @@
         .hero p {
             font-size: 1.25rem;
             color: var(--text-muted);
-            max-width: 600px;
-            margin-bottom: 3rem;
+            max-width: 650px;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.9375rem;
+            color: var(--text-muted);
+        }
+
+        .contact-info a {
+            color: var(--primary-red);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
         }
 
         .container {
@@ -147,6 +169,9 @@
             transition: border-color 0.2s ease, transform 0.2s ease;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .card::before {
@@ -181,6 +206,23 @@
             color: var(--text-muted);
             font-size: 0.9375rem;
             line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-links {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.875rem;
+        }
+
+        .card-links a {
+            color: var(--primary-red);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .card-links a:hover {
+            text-decoration: underline;
         }
 
         footer {
@@ -202,14 +244,19 @@
         <div class="logo">Marchland<span>Labs</span></div>
         <nav>
             <a href="#research">Research</a>
-            <a href="https://github.com/Self-Organising-Graph-Database" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/matthewbeddoes/" target="_blank">LinkedIn</a>
+            <a href="mailto:mattybeds2022@gmail.com">Contact</a>
         </nav>
     </header>
 
     <section class="hero">
-        <div class="badge">Advanced Research & Development</div>
+        <div class="badge">Advanced AI Research & Development</div>
         <h1>Pioneering Next-Gen <span>AI Architecture</span></h1>
-        <p>Marchland Labs builds core foundational systems spanning spatial graph databases, adaptive neural topologies, and autonomous multi-agent frameworks.</p>
+        <p>Marchland Labs builds core foundational systems spanning spatial graph databases, adaptive neural topologies, multi-agent frameworks, and advanced data engines.</p>
+        <div class="contact-info">
+            <span>Direct: <a href="mailto:mattybeds2022@gmail.com">mattybeds2022@gmail.com</a></span>
+            <span>Network: <a href="https://www.linkedin.com/in/matthewbeddoes/" target="_blank">Matthew Beddoes</a></span>
+        </div>
     </section>
 
     <main class="container" id="research">
@@ -217,33 +264,49 @@
         
         <div class="grid">
             <div class="card">
-                <h3>Self-Organising Graph</h3>
-                <p>Developing dynamic spatial graph databases combining Euclidean geometry and cosine similarity for adaptive AI memory.</p>
+                <div>
+                    <h3>Self-Organising Graph</h3>
+                    <p>Developing dynamic spatial graph databases combining Euclidean geometry and cosine similarity for adaptive AI memory across 2D and 3D architectures.</p>
+                </div>
+                <div class="card-links">
+                    <a href="https://github.com/MarchLandLabs/SOG3D" target="_blank">GitHub (SOG3D) &rarr;</a>
+                    <a href="https://github.com/Self-Organising-Graph-Database/SOG2D" target="_blank">GitHub (SOG2D) &rarr;</a>
+                </div>
             </div>
 
             <div class="card">
-                <h3>Object Recognition</h3>
-                <p>Researching advanced visual processing pipelines and structural object recognition paradigms.</p>
+                <div>
+                    <h3>Object Recognition</h3>
+                    <p>Researching advanced visual processing pipelines and structural object recognition paradigms.</p>
+                </div>
             </div>
 
             <div class="card">
-                <h3>Graph RAG AI</h3>
-                <p>Enhancing retrieval-augmented generation using structured graph topologies instead of flat vector indexes.</p>
+                <div>
+                    <h3>Graph RAG AI</h3>
+                    <p>Enhancing retrieval-augmented generation using structured graph topologies instead of flat vector indexes.</p>
+                </div>
             </div>
 
             <div class="card">
-                <h3>SLM (Small Language Models)</h3>
-                <p>Optimizing compact, specialized language models engineered for high-efficiency edge execution.</p>
+                <div>
+                    <h3>SLM (Small Language Models)</h3>
+                    <p>Optimizing compact, specialized language models engineered for high-efficiency edge execution.</p>
+                </div>
             </div>
 
             <div class="card">
-                <h3>AI Agents</h3>
-                <p>Building autonomous agent architectures capable of complex multi-step reasoning and dynamic tool execution.</p>
+                <div>
+                    <h3>AI Agents & Data Engines</h3>
+                    <p>Building autonomous agent architectures capable of complex multi-step reasoning, alongside robust data processing pipelines for regression and classification engines.</p>
+                </div>
             </div>
 
             <div class="card">
-                <h3>Evolving Chatbots</h3>
-                <p>Designing conversational systems driven by real-time reinforcement learning and adaptive state pathways.</p>
+                <div>
+                    <h3>Evolving Chatbots</h3>
+                    <p>Designing conversational systems driven by real-time reinforcement learning and adaptive state pathways.</p>
+                </div>
             </div>
         </div>
     </main>
