@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marchland Labs | AI Research & Development</title>
+    <style>
+        :root {
+            --primary-red: #cc0000;
+            --dark-red: #990000;
+            --bg-color: #0f0f10;
+            --surface-color: #18181b;
+            --text-main: #f4f4f5;
+            --text-muted: #a1a1aa;
+            --border-color: #27272a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border-color);
+            background-color: rgba(24, 24, 27, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--primary-red);
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        nav a:hover {
+            color: var(--text-main);
+        }
+
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8rem 2rem 4rem 2rem;
+            text-align: left;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: rgba(204, 0, 0, 0.1);
+            color: var(--primary-red);
+            border: 1px solid rgba(204, 0, 0, 0.2);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -0.035em;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+            max-width: 800px;
+        }
+
+        h1 span {
+            color: var(--primary-red);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin-bottom: 3rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 8rem 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background-color: var(--border-color);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 3px;
+            height: 100%;
+            background-color: var(--primary-red);
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .card:hover {
+            border-color: rgba(204, 0, 0, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.9375rem;
+            line-height: 1.5;
+        }
+
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        footer span {
+            color: var(--primary-red);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Marchland<span>Labs</span></div>
+        <nav>
+            <a href="#research">Research</a>
+            <a href="https://github.com/Self-Organising-Graph-Database" target="_blank">GitHub</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="badge">Advanced Research & Development</div>
+        <h1>Pioneering Next-Gen <span>AI Architecture</span></h1>
+        <p>Marchland Labs builds core foundational systems spanning spatial graph databases, adaptive neural topologies, and autonomous multi-agent frameworks.</p>
+    </section>
+
+    <main class="container" id="research">
+        <div class="section-title">Current Research Initiatives</div>
+        
+        <div class="grid">
+            <div class="card">
+                <h3>Self-Organising Graph</h3>
+                <p>Developing dynamic spatial graph databases combining Euclidean geometry and cosine similarity for adaptive AI memory.</p>
+            </div>
+
+            <div class="card">
+                <h3>Object Recognition</h3>
+                <p>Researching advanced visual processing pipelines and structural object recognition paradigms.</p>
+            </div>
+
+            <div class="card">
+                <h3>Graph RAG AI</h3>
+                <p>Enhancing retrieval-augmented generation using structured graph topologies instead of flat vector indexes.</p>
+            </div>
+
+            <div class="card">
+                <h3>SLM (Small Language Models)</h3>
+                <p>Optimizing compact, specialized language models engineered for high-efficiency edge execution.</p>
+            </div>
+
+            <div class="card">
+                <h3>AI Agents</h3>
+                <p>Building autonomous agent architectures capable of complex multi-step reasoning and dynamic tool execution.</p>
+            </div>
+
+            <div class="card">
+                <h3>Evolving Chatbots</h3>
+                <p>Designing conversational systems driven by real-time reinforcement learning and adaptive state pathways.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Marchland Labs. All rights reserved. Built with precision and <span>red</span> accents.</p>
+    </footer>
+
+</body>
+</html>
