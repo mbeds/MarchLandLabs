@@ -1,331 +1,173 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marchland Labs | AI Research & Development</title>
+    <title>Marchland Labs | AI Research & Cyber-Security R&D</title>
+    <meta name="description" content="Advanced AI Research & Development led by Matthew Beddoes. Specialising in Graph RAG, Small Language Models, Self-Organising Graphs, and secure neural topologies.">
+    <link rel="canonical" href="https://www.marchlandlabs.online" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-red: #cc0000;
-            --dark-red: #990000;
-            --bg-color: #0f0f10;
-            --surface-color: #18181b;
-            --text-main: #f4f4f5;
-            --text-muted: #a1a1aa;
-            --border-color: #27272a;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        header {
-            border-bottom: 1px solid var(--border-color);
-            background-color: rgba(24, 24, 27, 0.85);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            padding: 1.25rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            letter-spacing: -0.025em;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo span {
-            color: var(--primary-red);
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.875rem;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-
-        nav a:hover {
-            color: var(--text-main);
-        }
-
-        .hero {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 8rem 2rem 4rem 2rem;
-            text-align: left;
-        }
-
-        .badge {
-            display: inline-block;
-            background-color: rgba(204, 0, 0, 0.1);
-            color: var(--primary-red);
-            border: 1px solid rgba(204, 0, 0, 0.2);
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 1.5rem;
-        }
-
-        h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            letter-spacing: -0.035em;
-            margin-bottom: 1rem;
-            color: var(--text-main);
-            max-width: 800px;
-        }
-
-        h1 span {
-            color: var(--primary-red);
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            max-width: 650px;
-            margin-bottom: 2rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            font-size: 0.9375rem;
-            color: var(--text-muted);
-        }
-
-        .contact-info a {
-            color: var(--primary-red);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem 8rem 2rem;
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            letter-spacing: -0.02em;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .section-title::after {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background-color: var(--border-color);
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .card {
-            background-color: var(--surface-color);
-            border: 1px solid var(--border-color);
-            border-radius: 0.75rem;
-            padding: 2rem;
-            transition: border-color 0.2s ease, transform 0.2s ease;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 3px;
-            height: 100%;
-            background-color: var(--primary-red);
-            opacity: 0;
-            transition: opacity 0.2s ease;
-        }
-
-        .card:hover {
-            border-color: rgba(204, 0, 0, 0.4);
-            transform: translateY(-2px);
-        }
-
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        .card h3 {
-            font-size: 1.125rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            color: var(--text-main);
-        }
-
-        .card p {
-            color: var(--text-muted);
-            font-size: 0.9375rem;
-            line-height: 1.5;
-            margin-bottom: 1.5rem;
-        }
-
-        .card-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            font-size: 0.875rem;
-        }
-
-        .card-links a {
-            color: var(--primary-red);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .card-links a:hover {
-            text-decoration: underline;
-        }
-
-        footer {
-            border-top: 1px solid var(--border-color);
-            padding: 3rem 2rem;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.875rem;
-        }
-
-        footer span {
-            color: var(--primary-red);
-        }
-
-        @media (max-width: 640px) {
-            header {
-                padding: 1rem;
-            }
-            .hero {
-                padding: 5rem 1rem 3rem 1rem;
-            }
-            .container {
-                padding: 0 1rem 5rem 1rem;
-            }
-        }
+        body { font-family: 'Inter', sans-serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .hero-gradient { background: radial-gradient(circle at 50% 20%, rgba(204, 0, 0, 0.08) 0%, rgba(15, 15, 16, 1) 70%); }
+        .card-glow:hover { box-shadow: 0 10px 30px -10px rgba(204, 0, 0, 0.2); }
     </style>
 </head>
-<body>
+<body class="bg-[#0f0f10] text-[#f4f4f5] leading-normal selection:bg-red-600 selection:text-white">
 
-    <header>
-        <div class="logo">Marchland<span>Labs</span></div>
-        <nav>
-            <a href="#research">Research</a>
-            <a href="https://www.linkedin.com/in/matthewbeddoes/" target="_blank">LinkedIn</a>
-        </nav>
+    <!-- Header -->
+    <header class="border-b border-[#27272a] bg-[#18181b]/85 backdrop-blur-md sticky top-0 z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-lg font-bold tracking-tight text-white flex items-center gap-2">
+                <span class="w-2.5 h-2.5 bg-red-600 rounded-sm inline-block"></span>
+                Marchland<span class="text-red-600">Labs</span>
+            </div>
+            <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-[#a1a1aa]">
+                <a href="#research" class="hover:text-white transition">Research</a>
+                <a href="#ecosystem" class="hover:text-white transition">Ecosystem</a>
+                <a href="https://www.linkedin.com/in/matthewbeddoes/" target="_blank" class="hover:text-white transition">LinkedIn</a>
+            </nav>
+            <div>
+                <a href="mailto:matthew@business-analytica.com" class="bg-red-600 text-white text-xs font-bold uppercase tracking-wider px-4 py-2 rounded hover:bg-red-700 transition shadow-sm">
+                    Contact R&D
+                </a>
+            </div>
+        </div>
     </header>
 
-    <section class="hero">
-        <div class="badge">Advanced AI Research & Development</div>
-        <h1>Pioneering Next-Gen <span>AI Architecture</span></h1>
-        <p>Marchland Labs builds core foundational systems spanning spatial graph databases, adaptive neural topologies, multi-agent frameworks, and advanced data engines.</p>
-        <div class="contact-info">
-            <span>Direct: <a href="mailto:matthew@business-analytica">matthew@business-analytica.com</a></span>
-            <span>Network: <a href="https://www.linkedin.com/in/matthewbeddoes/" target="_blank">Matthew Beddoes</a></span>
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-24 pb-16 px-6 border-b border-[#27272a]">
+        <div class="max-w-5xl mx-auto">
+            <div class="inline-block bg-red-950/40 text-red-500 border border-red-500/20 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-6 mono">
+                Advanced AI & Neural Topologies R&D
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
+                Pioneering Next-Gen <br><span class="text-red-600">AI Memory & Graph Architecture</span>
+            </h1>
+            <p class="text-lg text-[#a1a1aa] max-w-2xl mb-8 leading-relaxed font-light">
+                Marchland Labs builds core foundational systems spanning self-organising spatial graph databases, secure Graph RAG frameworks, and high-efficiency small language models (SLMs) tailored for specialized edge execution.
+            </p>
+            <div class="flex flex-wrap gap-4 text-xs font-mono text-[#a1a1aa] border-t border-[#27272a] pt-6">
+                <div>Lead Researcher: <span class="text-white">Matthew Beddoes</span></div>
+                <div>&bull;</div>
+                <div>Direct Contact: <a href="mailto:matthew@business-analytica.com" class="text-red-500 hover:underline">matthew@business-analytica.com</a></div>
+                <div>&bull;</div>
+                <div>Partner: <a href="https://ukcybersecuritytesting.co.uk/" target="_blank" class="text-red-500 hover:underline">UK Cybersecurity Testing</a></div>
+            </div>
         </div>
     </section>
 
-    <main class="container" id="research">
-        <div class="section-title">Current Research Initiatives</div>
+    <!-- Current Research Initiatives -->
+    <main class="max-w-7xl mx-auto px-6 py-20" id="research">
+        <div class="flex items-center gap-4 mb-12">
+            <h2 class="text-2xl font-bold tracking-tight text-white uppercase">Current Research Initiatives</h2>
+            <div class="flex-1 h-px bg-[#27272a]"></div>
+        </div>
         
-        <div class="grid">
-            <div class="card">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div class="bg-[#18181b] border border-[#27272a] rounded-xl p-8 transition duration-200 card-glow flex flex-col justify-between relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-1 h-full bg-red-600 opacity-0 group-hover:opacity-100 transition duration-200"></div>
                 <div>
-                    <h3>Self-Organising Graph</h3>
-                    <p>Developing dynamic spatial graph databases combining Euclidean geometry and cosine similarity for adaptive AI memory across 2D and 3D architectures.</p>
+                    <h3 class="text-lg font-bold text-white mb-3">Self-Organising Graph (SOG)</h3>
+                    <p class="text-[#a1a1aa] text-sm leading-relaxed mb-6">
+                        Developing dynamic spatial graph databases combining Euclidean geometry and cosine similarity for adaptive AI memory across 2D and 3D network architectures.
+                    </p>
                 </div>
-                <div class="card-links">
-                    <a href="https://github.com/MarchLandLabs/SOG3D" target="_blank">GitHub (SOG3D) &rarr;</a>
-                    <a href="https://github.com/Self-Organising-Graph-Database/SOG2D" target="_blank">GitHub (SOG2D) &rarr;</a>
+                <div class="flex flex-wrap gap-4 text-xs font-semibold pt-4 border-t border-[#27272a]">
+                    <a href="https://github.com/MarchLandLabs/SOG3D" target="_blank" class="text-red-500 hover:underline">GitHub (SOG3D) &rarr;</a>
+                    <a href="https://github.com/Self-Organising-Graph-Database/SOG2D" target="_blank" class="text-red-500 hover:underline">GitHub (SOG2D) &rarr;</a>
                 </div>
             </div>
 
-            <div class="card">
+            <!-- Card 2 -->
+            <div class="bg-[#18181b] border border-[#27272a] rounded-xl p-8 transition duration-200 card-glow flex flex-col justify-between relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-1 h-full bg-red-600 opacity-0 group-hover:opacity-100 transition duration-200"></div>
                 <div>
-                    <h3>Object Recognition</h3>
-                    <p>Researching advanced visual processing pipelines and structural object recognition paradigms.</p>
+                    <h3 class="text-lg font-bold text-white mb-3">Graph RAG AI</h3>
+                    <p class="text-[#a1a1aa] text-sm leading-relaxed mb-6">
+                        Enhancing retrieval-augmented generation using structured graph topologies instead of flat vector indexes to eliminate context hallucination in enterprise setups.
+                    </p>
                 </div>
+                <div class="text-xs font-mono text-[#71717a]">Topology Optimisation</div>
             </div>
 
-            <div class="card">
+            <!-- Card 3 -->
+            <div class="bg-[#18181b] border border-[#27272a] rounded-xl p-8 transition duration-200 card-glow flex flex-col justify-between relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-1 h-full bg-red-600 opacity-0 group-hover:opacity-100 transition duration-200"></div>
                 <div>
-                    <h3>Graph RAG AI</h3>
-                    <p>Enhancing retrieval-augmented generation using structured graph topologies instead of flat vector indexes.</p>
+                    <h3 class="text-lg font-bold text-white mb-3">Small Language Models (SLMs)</h3>
+                    <p class="text-[#a1a1aa] text-sm leading-relaxed mb-6">
+                        Optimizing compact, specialized language models engineered for high-efficiency local execution, ensuring absolute enterprise privacy and zero cloud token leakage.
+                    </p>
                 </div>
+                <div class="text-xs font-mono text-[#71717a]">Edge Execution Focus</div>
             </div>
 
-            <div class="card">
+            <!-- Card 4 -->
+            <div class="bg-[#18181b] border border-[#27272a] rounded-xl p-8 transition duration-200 card-glow flex flex-col justify-between relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-1 h-full bg-red-600 opacity-0 group-hover:opacity-100 transition duration-200"></div>
                 <div>
-                    <h3>SLM (Small Language Models)</h3>
-                    <p>Optimizing compact, specialized language models engineered for high-efficiency edge execution.</p>
+                    <h3 class="text-lg font-bold text-white mb-3">Secure AI & Data Engines</h3>
+                    <p class="text-[#a1a1aa] text-sm leading-relaxed mb-6">
+                        Building hardened multi-agent architectures capable of multi-step reasoning, backed by defensive validation checks against prompt injection and data poisoning.
+                    </p>
                 </div>
+                <div class="text-xs font-mono text-[#71717a]">Defensive AI Frameworks</div>
             </div>
 
-            <div class="card">
+            <!-- Card 5 -->
+            <div class="bg-[#18181b] border border-[#27272a] rounded-xl p-8 transition duration-200 card-glow flex flex-col justify-between relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-1 h-full bg-red-600 opacity-0 group-hover:opacity-100 transition duration-200"></div>
                 <div>
-                    <h3>AI Agents & Data Engines</h3>
-                    <p>Building autonomous agent architectures capable of complex multi-step reasoning, alongside robust data processing pipelines for regression and classification engines.</p>
+                    <h3 class="text-lg font-bold text-white mb-3">Computer Vision & Object Recognition</h3>
+                    <p class="text-[#a1a1aa] text-sm leading-relaxed mb-6">
+                        Researching advanced visual processing pipelines and structural recognition paradigms to map complex visual parameters into machine-readable vector states.
+                    </p>
                 </div>
+                <div class="text-xs font-mono text-[#71717a]">Visual Intelligence</div>
             </div>
 
-            <div class="card">
+            <!-- Card 6 -->
+            <div class="bg-[#18181b] border border-[#27272a] rounded-xl p-8 transition duration-200 card-glow flex flex-col justify-between relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-1 h-full bg-red-600 opacity-0 group-hover:opacity-100 transition duration-200"></div>
                 <div>
-                    <h3>Evolving Chatbots</h3>
-                    <p>Designing conversational systems driven by real-time reinforcement learning and adaptive state pathways.</p>
+                    <h3 class="text-lg font-bold text-white mb-3">Adaptive State Chatbots</h3>
+                    <p class="text-[#a1a1aa] text-sm leading-relaxed mb-6">
+                        Designing conversational systems driven by real-time state tracking and reinforcement feedback mechanisms for highly contextual dialogue systems.
+                    </p>
                 </div>
+                <div class="text-xs font-mono text-[#71717a]">Dynamic Dialogues</div>
             </div>
         </div>
     </main>
 
-    <footer>
-        <p>&copy; 2026 Marchland Labs. Associated with <span>business-analytica</span>. All rights reserved.</p>
+    <!-- Ecosystem Section -->
+    <section id="ecosystem" class="bg-[#121216] border-t border-[#27272a] py-16 px-6">
+        <div class="max-w-5xl mx-auto text-center">
+            <h2 class="text-xl font-bold uppercase tracking-tight text-white mb-4">Ecosystem Collaboration</h2>
+            <p class="text-sm text-[#a1a1aa] max-w-xl mx-auto mb-8 font-light">
+                Marchland Labs operates as an independent R&D node collaborating with specialized advisory and security testing entities across the UK network.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 text-xs font-bold uppercase tracking-wider">
+                <a href="https://ukcybersecuritytesting.co.uk/" target="_blank" class="bg-[#18181b] border border-[#27272a] text-red-500 px-5 py-3 rounded-lg hover:border-red-600/50 transition">UK Cybersecurity Testing</a>
+                <a href="https://www.business-analytica.com" target="_blank" class="bg-[#18181b] border border-[#27272a] text-slate-300 px-5 py-3 rounded-lg hover:border-slate-600 transition">Business Analytica</a>
+                <a href="https://www.red-dragon-security.com" target="_blank" class="bg-[#18181b] border border-[#27272a] text-slate-300 px-5 py-3 rounded-lg hover:border-slate-600 transition">Red Dragon Security</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-[#27272a] py-12 px-6 text-center text-xs text-[#71717a]">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>&copy; 2026 Marchland Labs. Associated with <span class="text-red-500">Business Analytica</span>. All rights reserved.</div>
+            <div class="flex gap-6">
+                <a href="mailto:matthew@business-analytica.com" class="hover:text-white transition">Direct Email</a>
+                <a href="https://www.linkedin.com/in/matthewbeddoes/" target="_blank" class="hover:text-white transition">LinkedIn</a>
+            </div>
+        </div>
     </footer>
 
 </body>
